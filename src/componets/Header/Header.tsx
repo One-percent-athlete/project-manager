@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from 'react'
 
 const Header = () => {
@@ -9,6 +10,9 @@ const Header = () => {
                     <Link href="/" className="flex ml-2 md:mr-24">
                         <span className="slef-center text-xl font-semibold sm:text-2xl">PlanIt</span>
                     </Link>
+                </div>
+                <div>
+                    
                 </div>
             </div>
         </div>
