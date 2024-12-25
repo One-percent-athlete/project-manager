@@ -6,7 +6,9 @@ const Header = () => {
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
             <div className="flex items-center justify-between">
                 <div className="flex items-center justify-start">
-                    <Link href="/"></Link>
+                    <Link href="/" className="flex ml-2 md:mr-24">
+                        <span className="slef-center text-xl font-semibold sm:text-2xl">PlanIt</span>
+                    </Link>
                 </div>
             </div>
         </div>
