@@ -16,6 +16,7 @@ const Header = () => {
                         <div>
                             <button>
                                 <span className="sr-only">Open user menu</span>
+                                <Image className="w-8 h-8 rounded-full" src="" alt="" weidth={32} height={32} />
                             </button>
                         </div>
                     </div>
