@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidenav from "@/componets/Sidebar/SideNav"
+import Header from "@/componets/Header/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Sidenav />
+        <Header />
         <main className="ml-64 py-20 px-6">
           {children}
         </main>

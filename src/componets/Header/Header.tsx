@@ -11,8 +11,14 @@ const Header = () => {
                         <span className="slef-center text-xl font-semibold sm:text-2xl">PlanIt</span>
                     </Link>
                 </div>
-                <div>
-                    
+                <div className="flex items-center">
+                    <div className="relative items-center ml-3">
+                        <div>
+                            <button>
+                                <span className="sr-only">Open user menu</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
