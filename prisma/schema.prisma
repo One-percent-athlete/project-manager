@@ -38,4 +38,6 @@ model Account {
   scope String?
   id_token String? @db.String
   session_state String?
+
+  @@unique([provider, providerAccountId])
 }
