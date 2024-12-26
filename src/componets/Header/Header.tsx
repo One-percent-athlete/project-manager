@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import React from 'react'
 
 const Header = () => {
@@ -16,8 +17,11 @@ const Header = () => {
                         <div>
                             <button>
                                 <span className="sr-only">Open user menu</span>
-                                <Image className="w-8 h-8 rounded-full" src="" alt="" weidth={32} height={32} />
+                                <Image className="w-8 h-8 rounded-full" src="" alt="" width={32} height={32} />
                             </button>
+                        </div>
+                        <div className="z-50 right-0 absolute my-4 text-base list-none bg-white devide-y devide-gray-100 rounded shadow">
+                            
                         </div>
                     </div>
                 </div>
