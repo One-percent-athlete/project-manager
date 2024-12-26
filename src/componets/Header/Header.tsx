@@ -22,8 +22,8 @@ const Header = () => {
                         </div>
                         <div className="z-50 right-0 absolute my-4 text-base list-none bg-white devide-y devide-gray-100 rounded shadow">
                             <div className="px-4 py-3">
-                                <p className="text-sm text-gray-900">
-                                </p>
+                                <p className="text-sm text-gray-900">USERNAME</p>
+                                <p className="text-sm text-gray-900">USER EMAIL</p>
                             </div>
                         </div>
                     </div>
