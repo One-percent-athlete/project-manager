@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import React from 'react'
@@ -25,6 +27,7 @@ const Header = () => {
                                 <p className="text-sm text-gray-900">USERNAME</p>
                                 <p className="text-sm text-gray-900 font-medium truncate">USER EMAIL</p>
                             </div>
+                            <button className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
                         </div>
                     </div>
                 </div>
