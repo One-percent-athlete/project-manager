@@ -14,5 +14,12 @@ datasource db {
 }
 
 model User {
-  id string @id @default(auto()) @map("_id") @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  email String @unique
+  emailVerified DateTime?
+  image String?
+  account Account[]
+  projects Project[]
+  aiChat AiChat[]
 }
