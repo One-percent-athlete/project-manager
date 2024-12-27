@@ -64,6 +64,12 @@ model ProjectBoards {
   project Project @relation(fields: [projectId], references: [id])
 }
 
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
 model Feature {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   created_at DateTime @default(now())
