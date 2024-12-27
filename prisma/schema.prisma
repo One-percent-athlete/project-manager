@@ -61,4 +61,5 @@ model ProjectBoards {
   order Int
   slug String @unique
   features Feature[]
+  project Project @relation(fields: [projectId], references: [id])
 }
