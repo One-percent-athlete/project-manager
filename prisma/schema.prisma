@@ -43,18 +43,12 @@ model Account {
 }
 model Project {
   id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String @unique
+  description String @unique
+  slug String @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  projectBoards projectBoard[]
   userId String @db.ObjectId
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type String
-  provider String
-  providerAccountId String
-  refresh_token String? @db.String
-  access_token String? @db.String
-  expires_at Int?
-  token_type String?
-  scope String?
-  id_token String? @db.String
-  session_state String?
-
-  @@unique([provider, providerAccountId])
+  user User @relation(fields: [userId], references: [id])
 }
