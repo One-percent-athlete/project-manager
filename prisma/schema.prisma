@@ -54,5 +54,10 @@ model Project {
 }
 
 model ProjectBoards {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  status String @unique
+  order Int
   
 }
