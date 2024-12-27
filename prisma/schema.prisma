@@ -65,5 +65,10 @@ model ProjectBoards {
 }
 
 model Feature {
-  
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  name String @unique
+  slug String @unique
+
 }
