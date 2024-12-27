@@ -59,5 +59,6 @@ model ProjectBoards {
   updated_at DateTime @updatedAt
   status String @unique
   order Int
-  
+  slug String @unique
+  features Feature[]
 }
