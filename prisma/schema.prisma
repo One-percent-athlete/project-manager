@@ -63,3 +63,7 @@ model ProjectBoards {
   features Feature[]
   project Project @relation(fields: [projectId], references: [id])
 }
+
+model Feature {
+  
+}
