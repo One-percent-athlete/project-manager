@@ -62,6 +62,7 @@ model ProjectBoard {
   slug String @unique
   features Feature[]
   project Project @relation(fields: [projectId], references: [id])
+  projectId String @db.ObjectId
 }
 
 enum Priority {
