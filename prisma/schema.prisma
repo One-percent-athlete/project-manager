@@ -80,5 +80,6 @@ model Feature {
   priority Priority @default(LOW)
   finished_at DateTime
   order Int
-  projectBoard projectBoard @relation(fields: [projectBoard], references: [id])
+  projectBoard projectBoard @relation(fields: [projectBoardId], references: [id])
+  projectBoardId String @db.ObjectId
 }
