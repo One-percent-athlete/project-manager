@@ -53,7 +53,7 @@ model Project {
   user User @relation(fields: [userId], references: [id])
 }
 
-model ProjectBoards {
+model ProjectBoard {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -78,4 +78,7 @@ model Feature {
   slug String @unique
   description String 
   priority Priority @default(LOW)
+  finished_at DateTime
+  order Int
+  projectBoard projectBoard @relation(fields: [projectBoard], references: [id])
 }
