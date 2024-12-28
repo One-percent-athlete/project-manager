@@ -83,3 +83,11 @@ model Feature {
   projectBoard projectBoard @relation(fields: [projectBoardId], references: [id])
   projectBoardId String @db.ObjectId
 }
+
+model AiChat {
+  id String @id @default(auto()) @map("_id) @db.ObjectId
+  role ChatRole
+  content String
+  userId String @db.ObjectId
+  user User @relation(fields: [userId], references: [id])
+}
