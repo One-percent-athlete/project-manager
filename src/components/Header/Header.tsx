@@ -24,7 +24,8 @@ const Header = () => {
                         <div>
                             <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300" onClick={() => setShowDropdown(prevState => !prevState)}>
                                 <span className="sr-only">Open user menu</span>
-                                <Image className="w-8 h-8 rounded-full" src="" alt="" width={32} height={32} />
+                                <Image className="w-8 h-8 rounded-full" src={session?.user?.image ?? ""}
+                                } alt={session?.user?.name ?? ""} width={32} height={32} />
                             </button>
                         </div>
 
