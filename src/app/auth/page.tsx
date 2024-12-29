@@ -7,7 +7,7 @@ import { BsGithub } from "react-icons/bs"
 
 const Auth = () => {
     const {data: session } =useSession()
-const router = useRouter()
+    const router = useRouter()
 
 
     const authHandler = async () => {
