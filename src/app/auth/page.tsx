@@ -1,9 +1,15 @@
 "use client"
 
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import { BsGithub } from "react-icons/bs"
 
 const Auth = () => {
+
+    const {data: session, status } =useSession()
+
+    console.log(session, status);
+    
+
     const authHandler = async () => {
         try {
             await signIn("github", {redirect: false})
@@ -19,7 +25,7 @@ const Auth = () => {
                         Authenticate
                     </h3>
                     <div className="space-y-4 md:space-y-6">
-                        <BsGithub onClick={} className="w-full cursor-pointer text-gray-100 bg-blue-500 focus:outline-none font-medium rounded-lg text-5xl px-5 py-2.5 text-center" />
+                        <BsGithub onClick={authHandler} className="w-full cursor-pointer text-gray-100 bg-blue-500 focus:outline-none font-medium rounded-lg text-5xl px-5 py-2.5 text-center" />
                     </div>
                 </div>
             </div>
