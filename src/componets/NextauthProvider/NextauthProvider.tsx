@@ -6,6 +6,6 @@ type Props = {
     children: React.ReactNode
 }
 
-export const NextAuthProv = ({children}: Props) => {
+export const NextAuthProvider = ({children}: Props) => {
     <SessionProvider>{children}</SessionProvider>
 }

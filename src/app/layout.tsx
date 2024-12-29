@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/componets/Sidebar/Sidebar"
 import Header from "@/componets/Header/Header";
+import { NextAuthProvider } from "@/componets/NextauthProvider/NextauthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Sidebar />
-        <Header />
-        <main className="ml-64 py-20 px-6">
-          {children}
-        </main>
+        <NextAuthProvider>
+          {""}
+          <main className="ml-64 py-20 px-6">
+            <Sidebar />
+            <Header />
+            {children}
+          </main>
+        </NextAuthProvider>
       </body>
     </html>
   );
