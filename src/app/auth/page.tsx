@@ -1,14 +1,14 @@
 "use client"
 
 import { signIn, useSession } from "next-auth/react"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
 import { BsGithub } from "react-icons/bs"
 
 const Auth = () => {
+    const {data: session } =useSession()
+const router = useRouter()
 
-    const {data: session, status } =useSession()
-
-    console.log(session, status);
-    
 
     const authHandler = async () => {
         try {
@@ -17,6 +17,10 @@ const Auth = () => {
             console.log(error);
         }
     }
+
+    useEffect(() => {
+        if(session) router.push("/")
+    }, [router ,session])
     return (
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
             <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
