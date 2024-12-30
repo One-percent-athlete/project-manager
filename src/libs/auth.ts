@@ -23,7 +23,11 @@ export const authOptions: NextAuthOptions = {
                 where: { email: userEmail as string }
             })
             return {
-
+                ...session,
+                user: {
+                    ...session.user,
+                    id: user?.id
+                }
             }
         }
     }
