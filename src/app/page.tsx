@@ -1,5 +1,6 @@
 "use client"
 
+import ProjectTable from "@/components/ProjectTable/ProjectTable";
 import { Project } from "@/models/projects";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -18,6 +19,6 @@ export default function Home() {
     fetchProjects()
   }, [])
   return (
-    <>Home</>
+    <>{ projects && <ProjectTable projects={projects}/>}</>
   );
 }
