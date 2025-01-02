@@ -22,3 +22,11 @@ export async function GET(req: Request, res: Response) {
         return new NextResponse("Cannot fetch data", {status: 500})
     }
 }
+
+export async function POST(req: Request, res: Response) {
+    const session = await getServerSession(authOptions)
+
+    if(!session){
+        return new NextResponse("Not Authenticated", {status: 500})
+    }
+}
