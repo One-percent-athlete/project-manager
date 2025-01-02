@@ -29,4 +29,16 @@ export async function POST(req: Request, res: Response) {
     if(!session){
         return new NextResponse("Not Authenticated", {status: 500})
     }
+
+    const userEmail = session.user?.email
+
+    if(!userEmail){
+        return new NextResponse("Not Authenticated", {status: 500})
+    }
+
+    const user = await prisma.user.findUnique({where: { email: userEmail }})
+
+    if (!user) {
+        return new NextResponse("Not Authenticated", {status: 500})
+    }
 }
