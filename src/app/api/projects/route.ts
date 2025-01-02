@@ -41,4 +41,24 @@ export async function POST(req: Request, res: Response) {
     if (!user) {
         return new NextResponse("Not Authenticated", {status: 500})
     }
+
+    const { description, name, slug } = await req.json()
+
+    if(!description || !name || !slug) {
+        return new NextResponse("All fields are required", {status: 400}) 
+    }
+
+    try {
+        const createProject = await prisma.project.create({
+            data: {
+                description,
+                name,
+                slug,
+                userId: user.id
+            }
+        })
+    } catch (error) {
+        console.log(error);
+        return new NextResponse("Creation error, please tye again", {status: 500}) 
+    }
 }
