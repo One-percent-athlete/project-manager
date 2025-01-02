@@ -34,7 +34,7 @@ const ProjectTable: FC<Props> = (props) => {
             <tbody>
                 {projects.map(project => {
 
-                    const formattedDate = format(new Date(project.createdAt))
+                    const formattedDate = format(new Date(project.createdAt), "dd/MM/yyyy")
 
                     return (
                         <tr key={project.id} className="bg-white border-b hover:bg-gray-50">
