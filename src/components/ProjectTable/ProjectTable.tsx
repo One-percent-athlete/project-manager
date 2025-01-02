@@ -41,9 +41,13 @@ const ProjectTable: FC<Props> = (props) => {
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap cursor-pointer underline">
                                 <Link href={`/project/${project.slug}`}>{project.name}</Link>
                             </th>
-                            <td className="px-6 py-4 ">{project.description}</td>
-                            <td className="px-6 py-4 ">{project.description}</td>
-                            <td className="px-6 py-4 ">{project.description}</td>
+                            <td className="px-6 py-4">{project.description}</td>
+                            <td className="px-6 py-4">{formattedDate}</td>
+                            <td className="px-6 py-4v text-right">
+                                <button className="font-medium text-blue-500 hover:underline">
+                                    Edit
+                                </button>
+                            </td>
                         </tr>
                     )
                 })}
