@@ -11,9 +11,9 @@ export async function GET(req: Request, res: Response) {
     }
 
     try {
-        const products = await prisma.project.findMany()
+        const projects = await prisma.project.findMany()
 
-        return NextResponse.json(products, {
+        return NextResponse.json(projects, {
             status: 200,
             statusText: "Successful"
         })
@@ -56,6 +56,10 @@ export async function POST(req: Request, res: Response) {
                 slug,
                 userId: user.id
             }
+        })
+        return NextResponse.json(createProject, {
+            status: 200,
+            statusText: "Project Created Successfully"
         })
     } catch (error) {
         console.log(error);
