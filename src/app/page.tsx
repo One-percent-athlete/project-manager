@@ -12,13 +12,12 @@ export default function Home() {
   useEffect(() => {
     const fetchProjects = async () => {
       const { data } = await axios.get("/api/projects")
-      console.log(data);
       setProjects(data)
     }
 
     fetchProjects()
   }, [])
   return (
-    <>{ projects && <ProjectTable projects={projects}/>}</>
+    <>{ projects && <ProjectTable projects={projects}/> }</>
   );
 }

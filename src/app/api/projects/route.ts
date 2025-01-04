@@ -63,6 +63,6 @@ export async function POST(req: Request, res: Response) {
         })
     } catch (error) {
         console.log(error);
-        return new NextResponse("Creation error, please tye again", {status: 500}) 
+        return new NextResponse("Creation error, please try again", {status: 500}) 
     }
 }
