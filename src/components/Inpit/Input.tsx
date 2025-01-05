@@ -1,4 +1,4 @@
-import { ChangeEventHandler, InputHTMLAttributes } from "react"
+import { ChangeEventHandler, FC, InputHTMLAttributes } from "react"
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
     label: string
@@ -10,9 +10,15 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
     onChange: ChangeEventHandler<HTMLInputElement>
 }
 
-const Input = () => {
+const Input: FC<Props> = (props) => {
+    const { label, name, onChange, placeholder, type, value, required, ...restProps } = props
   return (
-    <div>Input</div>
+    <div>
+        <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900">
+            {label}
+        </label>
+        <input type={type} name={name} id={name} placeholder={placeholder} required={required} value={value} onChange={onChange} {...restProps} />
+    </div>
   )
 }
 
