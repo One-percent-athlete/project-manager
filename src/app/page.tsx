@@ -19,6 +19,7 @@ export default function Home() {
   const [ projects, setProjects ] = useState<null | Project[]>(null)
   const [ showForm, setShowForm ] = useState(false)
   const [ isCreateProject, setIsCreateProject ] = useState(false)
+  const [ isEditProject, setIsEditProject ] = useState(false)
   const [ formData, setFormData ] = useState<FormData>({name: "", description: "", id: ""})
 
   useEffect(() => {
@@ -41,6 +42,10 @@ export default function Home() {
   
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (isEditProject) {
+      return handleUpdate()
+    }
 
     setIsCreateProject(true)
 
