@@ -58,3 +58,23 @@ export async function POST(req: Request, res: Response) {
         return new NextResponse("Creation error, please try again", {status: 500}) 
     }
 }
+
+export async function PATCH(req: Request, res: Response) {
+    const {name, description, id, slug} = await req.json()
+
+    if (!name || !description || !id || !slug) {
+        return new NextResponse("All fields are required.", { status: 400 })
+    } 
+
+    try {
+        const updatedProject = await prisma.project.update({
+            where: { id },
+            data: { name, description, slug }
+        })
+
+        return NextResponse.json(updatedProject, { status: 200, statusText: "Successful" })
+    } catch (error) {
+        console.log(error);
+        return new NextResponse("Error updating, please try again", { status: 500 })
+    }
+}
