@@ -5,7 +5,7 @@ import ProjectForm from "@/components/ProjectForm/ProjectForm";
 import ProjectTable from "@/components/ProjectTable/ProjectTable";
 import { Project } from "@/models/projects";
 import axios from "axios";
-import { FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 export default function Home() {
 
@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       <Modal isVisible={showForm} />
-      <ProjectForm formData={formData} isVisible={showForm} toggleProjectForm={() => {}} handleSubmit={handleSubmit} isCreateProject={isCreateProject} />
+      <ProjectForm formData={formData} isVisible={showForm} toggleProjectForm={() => { } } handleSubmit={handleSubmit} isCreateProject={isCreateProject} onChange={() => {} } />
       <button className="relative outline-none inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden">
         <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:first-line:ring-opacity-45">
           Create Project

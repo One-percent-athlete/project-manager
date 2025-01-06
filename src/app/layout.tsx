@@ -4,6 +4,7 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar/Sidebar"
 import Header from "@/components/Header/Header";
 import { NextauthProvider } from "@/components/NextauthProvider/NextauthProvider";
+import Toast from "@/components/ProjectForm/Toast/Toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body>
         <NextauthProvider>
           <main className="ml-64 py-20 px-6">
+            <Toast />
             <Sidebar />
             <Header />
             {children}
