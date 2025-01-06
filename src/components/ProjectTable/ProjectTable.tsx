@@ -15,10 +15,11 @@ type Props = {
     projects: Project[]
     setIsEditProject: Dispatch<SetStateAction<boolean>>
     setFormData: Dispatch<SetStateAction<FormData>>
+    setShowForm: Dispatch<SetStateAction<boolean>>
 }
 
 const ProjectTable: FC<Props> = (props) => {
-    const {projects, setIsEditProject, setFormData } = props
+    const {projects, setIsEditProject, setFormData, setShowForm } = props
 
     const editHandler = (project: Project) => {
         setIsEditProject(true)
@@ -27,7 +28,7 @@ const ProjectTable: FC<Props> = (props) => {
             name: project.name,
             description: project.description
         })
-        
+        setShowForm(true)
     }
 
   return (
