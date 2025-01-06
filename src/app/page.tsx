@@ -69,7 +69,10 @@ export default function Home() {
     <>
       <Modal isVisible={showForm} />
       <ProjectForm formData={formData} isVisible={showForm} toggleProjectForm={toggleProjectForm} handleSubmit={handleSubmit} isCreateProject={isCreateProject} onChange={handleInputChange} />
-      <button className="relative outline-none inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden">
+      <button onClick={() => {
+        setFormData({name: "", description: ""})
+        toggleProjectForm()
+      }} className="relative outline-none inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden">
         <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:first-line:ring-opacity-45">
           Create Project
         </span>
