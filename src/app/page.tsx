@@ -99,7 +99,7 @@ export default function Home() {
           Create Project
         </span>
       </button>
-      { projects && <ProjectTable projects={projects}/> }
+      { projects && <ProjectTable projects={projects} setIsEditProject={setIsEditProject} /> }
     </>
   );
 }

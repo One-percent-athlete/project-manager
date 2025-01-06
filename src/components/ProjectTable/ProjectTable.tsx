@@ -1,16 +1,21 @@
 "use client"
 
-import { Project } from "@/models/projects"
 import { format } from "date-fns"
 import Link from "next/link"
-import { FC } from "react"
+import { Dispatch, FC, SetStateAction } from "react"
+import { Project } from "@/models/projects"
 
 type Props = {
     projects: Project[]
+    setIsEditProject: Dispatch<SetStateAction<boolean>>
 }
 
 const ProjectTable: FC<Props> = (props) => {
     const {projects} = props
+
+    const editHandler = (project: Project) => {
+
+    }
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
@@ -44,7 +49,7 @@ const ProjectTable: FC<Props> = (props) => {
                             <td className="px-6 py-4">{project.description}</td>
                             <td className="px-6 py-4">{formattedDate}</td>
                             <td className="px-6 py-4v text-right">
-                                <button className="font-medium text-blue-500 hover:underline">
+                                <button onClick={() => editHandler(project)} className="font-medium text-blue-500 hover:underline">
                                     Edit
                                 </button>
                             </td>
