@@ -44,23 +44,23 @@ export default function Home() {
 
     setIsCreateProject(true)
 
-    // const slug = slugify(formData.name)
+    const slug = slugify(formData.name)
 
-    // try {
-    //   const { statusText } = await axios.post("/api/projects", {
-    //     name: formData.name,
-    //     description: formData.description,
-    //     slug
-    //   })
+    try {
+      const { statusText } = await axios.post("/api/projects", {
+        name: formData.name,
+        description: formData.description,
+        slug
+      })
 
-    //   toast.success(statusText)
-    // } catch (error: any) {
-    //   toast.error(error.response.data)
-    // } finally {
-    //   setFormData({ name: "", description: ""})
-    //   setShowForm(false)
-    //   setIsCreateProject(false)
-    // }
+      toast.success(statusText)
+    } catch (error: any) {
+      toast.error(error.response.data)
+    } finally {
+      setFormData({ name: "", description: ""})
+      setShowForm(false)
+      setIsCreateProject(false)
+    }
   }
 
   const toggleProjectForm = () => setShowForm(prevState => !prevState)
