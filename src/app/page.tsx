@@ -63,6 +63,23 @@ export default function Home() {
     }
   }
 
+  const handleUpdate = async () => {
+    const slug = slugify(formData.name)
+
+    try {
+      const { statusText } = await axios.patch("/api/projects", {
+        id: formData.id,
+        name: formData.name,
+        description: formData.description,
+        slug
+      })
+
+      toast.success(statusText)
+    } catch (error: any) {
+      toast.error(error.response.data)
+    }
+  }
+
   const toggleProjectForm = () => setShowForm(prevState => !prevState)
 
   return (
