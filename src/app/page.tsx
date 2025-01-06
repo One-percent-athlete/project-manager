@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <>
       <Modal isVisible={showForm} />
-      <ProjectForm formData={formData} isVisible={showForm} toggleProjectForm={toggleProjectForm} handleSubmit={handleSubmit} isCreateProject={isCreateProject} onChange={handleInputChange} />
+      <ProjectForm formData={formData} isVisible={showForm} toggleProjectForm={toggleProjectForm} handleSubmit={handleSubmit} isCreateProject={isCreateProject} onChange={handleInputChange} isEditProject={isEditProject} />
       <button onClick={() => {
         setFormData({name: "", description: ""})
         toggleProjectForm()
