@@ -5,16 +5,29 @@ import Link from "next/link"
 import { Dispatch, FC, SetStateAction } from "react"
 import { Project } from "@/models/projects"
 
+interface FormData {
+    name: string, 
+    description: string, 
+    id?:string
+  }
+
 type Props = {
     projects: Project[]
     setIsEditProject: Dispatch<SetStateAction<boolean>>
+    setFormData: Dispatch<SetStateAction<FormData>>
 }
 
 const ProjectTable: FC<Props> = (props) => {
-    const {projects} = props
+    const {projects, setIsEditProject, setFormData } = props
 
     const editHandler = (project: Project) => {
-
+        setIsEditProject(true)
+        setFormData({
+            id: project.id,
+            name: project.name,
+            description: project.description
+        })
+        
     }
 
   return (
