@@ -32,15 +32,7 @@ export async function POST(req: Request, res: Response) {
 
     const userEmail = session.user?.email
 
-    if(!userEmail){
-        return new NextResponse("Not Authenticated", {status: 500})
-    }
-
-    const user = await prisma.user.findUnique({where: { email: userEmail }})
-
-    if (!user) {
-        return new NextResponse("Not Authenticated", {status: 500})
-    }
+    const userId = session.user?.id 
 
     const { description, name, slug } = await req.json()
 
@@ -54,7 +46,7 @@ export async function POST(req: Request, res: Response) {
                 description,
                 name,
                 slug,
-                userId: user.id
+                userId
             }
         })
         return NextResponse.json(createProject, {
