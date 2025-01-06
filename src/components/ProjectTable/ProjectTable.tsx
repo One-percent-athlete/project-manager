@@ -58,7 +58,7 @@ const ProjectTable: FC<Props> = (props) => {
                     return (
                         <tr key={project.id} className="bg-white border-b hover:bg-gray-50">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap cursor-pointer underline">
-                                <Link href={`/project/${project.slug}`}>{project.name}</Link>
+                                <Link href={`/projects/${project.slug}`}>{project.name}</Link>
                             </th>
                             <td className="px-6 py-4">{project.description}</td>
                             <td className="px-6 py-4">{formattedDate}</td>
