@@ -30,6 +30,10 @@ export async function POST(req: Request, res:Response) {
                 order: nextOrder
             }
         })
+
+        return NextResponse.json(createProjectBoard, {
+            status: 200, statusText: "Project board created."
+        })
     } catch (error) {
         return new NextResponse("Creation Error", {status: 500})
     }
