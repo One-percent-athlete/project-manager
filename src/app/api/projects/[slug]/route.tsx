@@ -6,6 +6,8 @@ export async function GET(req: Request, { params}: any) {
         const project = await prisma.project.findUnique({
             where: {slug: params.slug}
         })
+
+        return NextResponse.json(project, {status: 200, statusText: "Successful"})
     } catch (error) {
         return new NextResponse("Cannot fetch data", {status: 500})
     }
