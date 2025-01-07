@@ -1,5 +1,6 @@
 "use client"
 
+import AddBoardForm from "@/components/AddBoardForm/AddBoardForm"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
@@ -21,6 +22,7 @@ const ProjectItem = () => {
     if (!project) return<></>
   return 
   <>
+    <AddBoardForm isVisible />
     <div className="mb-6">
         <h4 className="text-2xl font-bold">{project?.name}</h4> 
         <p className="text-base text-gray-600">{project?.description}</p> 
