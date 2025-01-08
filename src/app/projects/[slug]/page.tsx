@@ -39,6 +39,8 @@ const ProjectItem = () => {
     const handleBoardSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         setIsSubmitting(true)
+
+        const slug = slugify(boardData.status)
     }
 
     return (
@@ -56,3 +58,7 @@ const ProjectItem = () => {
     </>)
 }
 export default ProjectItem
+
+function slugify(status: string) {
+    throw new Error("Function not implemented.")
+}
