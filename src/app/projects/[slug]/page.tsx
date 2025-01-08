@@ -63,7 +63,7 @@ const ProjectItem = () => {
             <p className="text-base text-gray-600">{project?.description}</p> 
         </div>
 
-        <div className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
+        <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
             <AiFillPlusCircle className="text-6xl" />
         </div>
     </>)
