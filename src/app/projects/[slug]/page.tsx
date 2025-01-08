@@ -6,6 +6,7 @@ import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import React, { ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
+import toast from "react-hot-toast"
 import { AiFillPlusCircle } from "react-icons/ai"
 
 const ProjectItem = () => {
@@ -41,6 +42,15 @@ const ProjectItem = () => {
         setIsSubmitting(true)
 
         const slug = slugify(boardData.status)
+
+        try {
+            const {} = await axios.post("/api/project-board", {status: boardData.status, project: project.id, slug})
+        } catch (error: any) {
+            toast.error(error.response.data)
+        } finally {
+            setBoardData({ status: ""})
+            setIsSubmitting(false)
+        }
     }
 
     return (
