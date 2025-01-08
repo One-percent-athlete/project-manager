@@ -2,6 +2,7 @@
 
 import AddBoardForm from "@/components/AddBoardForm/AddBoardForm"
 import Modal from "@/components/Modal/Modal"
+import ProjectBoard from "@/components/ProjectBoard/ProjectBoard"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
@@ -66,6 +67,12 @@ const ProjectItem = () => {
         </div>
 
         <div className="flex gap-6 items-start">
+            <div className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
+                {project.projectBoards.map(projectBoard => (
+                    <ProjectBoard key={projectBoard.id} boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={() => {}} />
+                ))}
+            </div>
+
             <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
                 <AiFillPlusCircle className="text-6xl" />
             </div>
