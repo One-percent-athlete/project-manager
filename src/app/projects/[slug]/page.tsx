@@ -44,7 +44,7 @@ const ProjectItem = () => {
         const slug = slugify(boardData.status)
 
         try {
-            const { statusText } = await axios.post("/api/project-board", {status: boardData.status, project: project.id, slug})
+            const { statusText } = await axios.post("/api/project-board", {status: boardData.status, projectId: project.id, slug})
 
             toast.success(statusText)
         } catch (error: any) {
