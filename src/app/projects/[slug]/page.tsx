@@ -5,7 +5,7 @@ import Modal from "@/components/Modal/Modal"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
-import React, { useEffect, useState } from 'react'
+import React, { ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
 import { AiFillPlusCircle } from "react-icons/ai"
 
 const ProjectItem = () => {
@@ -27,10 +27,24 @@ const ProjectItem = () => {
     if (!project) return <></>
     const toggleAddBoardForm = () => setIsAddBoardFormVisible(prevState => !prevState)
 
+    const updateBoardHandler: ChangeEventHandler<HTMLInputElement> = (event) => {
+        const { name, value } =event.target
+
+        setBoardData(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+    }
+
+    const handleBoardSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setIsSubmitting(true)
+    }
+
     return (
     <>
         <Modal isVisible={isAddBoardFormVisible} />
-        <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={} isSubmitting={isSubmitting} updateBoardHandler={} />
+        <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
         <div className="mb-6">
             <h4 className="text-2xl font-bold">{project?.name}</h4> 
             <p className="text-base text-gray-600">{project?.description}</p> 
