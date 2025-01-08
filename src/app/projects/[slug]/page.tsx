@@ -50,6 +50,7 @@ const ProjectItem = () => {
         } finally {
             setBoardData({ status: ""})
             setIsSubmitting(false)
+            setIsAddBoardFormVisible(false)
         }
     }
 
