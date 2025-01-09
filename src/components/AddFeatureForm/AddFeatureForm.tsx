@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const AddFeatureForm = () => {
+type Props = {
+    
+}
+
+const AddFeatureForm: FC<Props> = () => {
   return (
     <div>AddFeatureForm</div>
   )
