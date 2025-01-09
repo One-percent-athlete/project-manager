@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, FormEvent } from 'react'
 
 type Props = {
     isVisible: boolean
     toggleAddFeatureForm: () => void
-    
+    handleFeatureSubmit: (event:FormEvent<HTMLFormElement>)
 }
 
 const AddFeatureForm: FC<Props> = (props) => {
