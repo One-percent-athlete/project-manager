@@ -15,6 +15,7 @@ const ProjectItem = () => {
     const [isAddBoardFormVisible, setIsAddBoardFormVisible ] = useState(false)
     const [isSubmitting, setIsSubmitting ] = useState(false)
     const [boardData, setBoardData] = useState({status: ""})
+    const [selectBoardId, setSelectBoardId] = useState("")
 
     const { slug } = useParams()
 
