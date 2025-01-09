@@ -70,7 +70,7 @@ const ProjectItem = () => {
         <div className="flex gap-6 items-start">
             <div className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
                 {project.projectBoards.map(projectBoard => (
-                    <ProjectBoard key={projectBoard.id} boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={() => {}} />
+                    <ProjectBoard key={projectBoard.id} boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={0} setSelectBoardId={setSelectBoardId} toggleAddFeature={() => {}} />
                 ))}
             </div>
 
