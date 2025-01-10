@@ -15,7 +15,7 @@ export async function POST(req:Request, res:Response) {
             }
         })
 
-        
+        if (!projectBoard) return new NextResponse("Feature must belong to a project board", {status: 400})
     } catch (error) {
         console.log(error);
         return new NextResponse("Creation Error", {status: 500})
