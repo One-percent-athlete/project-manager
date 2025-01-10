@@ -1,4 +1,5 @@
 import prisma from "@/libs/prisma";
+import { parseISO } from "date-fns";
 import { NextResponse } from "next/server";
 
 export async function POST(req:Request, res:Response) {
@@ -16,6 +17,22 @@ export async function POST(req:Request, res:Response) {
         })
 
         if (!projectBoard) return new NextResponse("Feature must belong to a project board", {status: 400})
+        
+        const order = projectBoard.features.length + 1
+
+        const feature = await prisma.feature.create({
+            data: {
+                name, 
+                description,
+                finishDate: parseISO(finishDate),
+                order,
+                slug,
+                projectBoard: {
+                    connect: { id: projectBoardId }
+                }
+            }
+        })
+        
     } catch (error) {
         console.log(error);
         return new NextResponse("Creation Error", {status: 500})
