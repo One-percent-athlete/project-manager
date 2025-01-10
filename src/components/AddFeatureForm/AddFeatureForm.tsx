@@ -25,7 +25,9 @@ const AddFeatureForm: FC<Props> = (props) => {
 
         <div className="px-6 py-6 lg:px-8">
             <form onSubmit={handleFeatureSubmit} className="space-y-6">
-                <Input label="Feature Name" name="Name" type="text" placeholder="Enter Feature Name" value={featureFormData.name} onChange={handleFeatureChange} required />
+                <Input label="Feature Name" name="name" type="text" placeholder="Enter Feature Name" value={featureFormData.name} onChange={handleFeatureChange} required />
+                <Input label="Description" name="description" type="text" placeholder="Enter Feature Description" value={featureFormData.description} onChange={handleFeatureChange} required />
+                <Input label="Finish Date" name="finishDate" type="text" placeholder="Enter Finish Date" value={featureFormData.name} onChange={handleFeatureChange} required />
             </form>
         </div>
     </div>
