@@ -13,7 +13,7 @@ type Props = {
 }
 
 const AddFeatureForm: FC<Props> = (props) => {
-    const {} = props
+    const { isVisible, featureFormData, handleFeatureChange, handleFeatureSubmit, toggleAddFeatureForm } = props
 
   return (
     <div>AddFeatureForm</div>
