@@ -27,7 +27,9 @@ const AddFeatureForm: FC<Props> = (props) => {
             <form onSubmit={handleFeatureSubmit} className="space-y-6">
                 <Input label="Feature Name" name="name" type="text" placeholder="Enter Feature Name" value={featureFormData.name} onChange={handleFeatureChange} required />
                 <Input label="Description" name="description" type="text" placeholder="Enter Feature Description" value={featureFormData.description} onChange={handleFeatureChange} required />
-                <Input label="Finish Date" name="finishDate" type="text" placeholder="Enter Finish Date" value={featureFormData.name} onChange={handleFeatureChange} required />
+                <Input label="Finish Date" name="finishDate" type="date" placeholder="Enter Finish Date" value={featureFormData.finishDate} onChange={handleFeatureChange} required />
+
+                <button className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Create Feature</button>
             </form>
         </div>
     </div>
