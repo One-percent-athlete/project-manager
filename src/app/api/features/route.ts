@@ -1,3 +1,4 @@
+import prisma from "@/libs/prisma";
 import { NextResponse } from "next/server";
 
 export async function POST(req:Request, res:Response) {
@@ -7,6 +8,13 @@ export async function POST(req:Request, res:Response) {
     if (!name || !description || !finishDate || !projectBoardId || !slug) return new NextResponse("Please Provide All Infomation", {status: 400})
 
     try {
+        const projectBoard = await prisma.projectBoard.findUnique({
+            where: { id: projectBoardId },
+            include: {
+                features: true
+            }
+        })
+
         
     } catch (error) {
         console.log(error);
