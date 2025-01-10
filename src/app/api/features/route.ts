@@ -32,7 +32,11 @@ export async function POST(req:Request, res:Response) {
                 }
             }
         })
-        
+
+        return NextResponse.json(feature, {
+            status: 200,
+            statusText: "Feature Created Successfully."
+        })
     } catch (error) {
         console.log(error);
         return new NextResponse("Creation Error", {status: 500})
