@@ -8,11 +8,12 @@ type Props = {
     featureFormData: {
         name: string
         description: string
-        finishData: string
+        finishDate: string
     }
 }
 
 const AddFeatureForm: FC<Props> = (props) => {
+    const {} = props
 
   return (
     <div>AddFeatureForm</div>
