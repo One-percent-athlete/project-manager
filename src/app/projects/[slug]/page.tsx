@@ -1,6 +1,7 @@
 "use client"
 
 import AddBoardForm from "@/components/AddBoardForm/AddBoardForm"
+import AddFeatureForm from "@/components/AddFeatureForm/AddFeatureForm"
 import Modal from "@/components/Modal/Modal"
 import ProjectBoard from "@/components/ProjectBoard/ProjectBoard"
 import { Project } from "@/models/projects"
@@ -61,6 +62,9 @@ const ProjectItem = () => {
     return (
     <>
         <Modal isVisible={isAddBoardFormVisible} />
+
+        <AddFeatureForm />
+
         <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
         <div className="mb-6">
             <h4 className="text-2xl font-bold">{project?.name}</h4> 
