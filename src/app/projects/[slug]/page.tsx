@@ -63,7 +63,7 @@ const ProjectItem = () => {
     <>
         <Modal isVisible={isAddBoardFormVisible} />
 
-        <AddFeatureForm featureFormData={} handleFeatureChange={} handleFeatureSubmit={} isVisible />
+        <AddFeatureForm featureFormData={} handleFeatureChange={} handleFeatureSubmit={} isVisible={} toggleAddFeatureForm={} />
 
         <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
         <div className="mb-6">
