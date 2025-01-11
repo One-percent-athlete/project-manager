@@ -7,7 +7,7 @@ import ProjectBoard from "@/components/ProjectBoard/ProjectBoard"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
-import React, { ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
 import toast from "react-hot-toast"
 import { AiFillPlusCircle } from "react-icons/ai"
 
@@ -61,11 +61,20 @@ const ProjectItem = () => {
         }
     }
 
+    const handleFeatureChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = event.target
+
+        setFeatureFormData(prevData => ({
+            ...prevData,
+            [name]:value
+        }))
+    }
+
     return (
     <>
         <Modal isVisible={isAddBoardFormVisible || isAddFeatureFormVisible } />
 
-        <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={} handleFeatureSubmit={} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={} />
+        <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={handleFeatureChange} handleFeatureSubmit={} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={} />
 
         <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
         <div className="mb-6">
