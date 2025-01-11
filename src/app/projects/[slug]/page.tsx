@@ -85,7 +85,9 @@ const ProjectItem = () => {
             toast.success(statusText)
         } catch (error: any) {
             toast.error(error.response.data)
-        }
+        } finally {
+            setFeatureFormData({ name: "", description: "", finishDate: ""})
+        } 
     }
 
     const toggleAddFeatureForm = () => setIsAddFeatureFormVisible(prevState => !prevState)
