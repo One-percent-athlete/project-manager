@@ -18,6 +18,7 @@ const ProjectItem = () => {
     const [isAddFeatureFormVisible, setIsAddFeatureFormVisible ] = useState(false)
     const [boardData, setBoardData] = useState({status: ""})
     const [selectBoardId, setSelectBoardId] = useState("")
+    const [featureFormData, setFeatureFormData] = useState({name: "", description: "", finishDate:""})
 
     const { slug } = useParams()
 
@@ -64,7 +65,7 @@ const ProjectItem = () => {
     <>
         <Modal isVisible={isAddBoardFormVisible || isAddFeatureFormVisible } />
 
-        <AddFeatureForm featureFormData={} handleFeatureChange={} handleFeatureSubmit={} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={} />
+        <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={} handleFeatureSubmit={} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={} />
 
         <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
         <div className="mb-6">
