@@ -16,5 +16,18 @@ export type ProjectBoard = {
     order: number
     slug: string
     projectId: string
-    feature: []
+    feature: Feature[]
+}
+
+export interface Feature {
+    id: string
+    createdAt: Date
+    updatedAt: Date
+    name: string
+    slug: string
+    description: string
+    priority: "LOW" | "MEDIUM" | "HIGH"
+    finishDate: Date
+    order: number
+    projectBoardId: string
 }
