@@ -87,6 +87,7 @@ const ProjectItem = () => {
             toast.error(error.response.data)
         } finally {
             setFeatureFormData({ name: "", description: "", finishDate: ""})
+            setIsAddBoardFormVisible(false)
         } 
     }
 
