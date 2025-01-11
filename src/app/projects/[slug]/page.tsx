@@ -70,11 +70,23 @@ const ProjectItem = () => {
         }))
     }
 
+    const handleFeatureSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const slug = slugify(featureFormData.name.toLowerCase())
+
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
+
     return (
     <>
         <Modal isVisible={isAddBoardFormVisible || isAddFeatureFormVisible } />
 
-        <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={handleFeatureChange} handleFeatureSubmit={} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={} />
+        <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={handleFeatureChange} handleFeatureSubmit={handleFeatureSubmit} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={} />
 
         <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
         <div className="mb-6">
