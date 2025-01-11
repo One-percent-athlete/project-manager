@@ -76,9 +76,9 @@ const ProjectItem = () => {
         const slug = slugify(featureFormData.name.toLowerCase())
 
         try {
-            
-        } catch (error) {
-            
+            const {statusText} = await axios.post("", {})
+        } catch (error: any) {
+            toast.error(error.response.data)
         }
     }
 
