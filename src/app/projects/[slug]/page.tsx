@@ -76,7 +76,13 @@ const ProjectItem = () => {
         const slug = slugify(featureFormData.name.toLowerCase())
 
         try {
-            const {statusText} = await axios.post("", {})
+            const {statusText} = await axios.post("/api/features", {
+                ...featureFormData,
+                slug,
+                projectBoardId: selectBoardId
+            })
+
+            toast.success(statusText)
         } catch (error: any) {
             toast.error(error.response.data)
         }
