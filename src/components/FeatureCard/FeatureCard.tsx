@@ -13,6 +13,10 @@ const FeatureCard: FC<Props> = (props) => {
         <span className="bg-[#dfa87433] text-[#D58D49] rounded-[4px] px-[6px] py-1 font-medium text-xs">
             {priority}
         </span>
+
+        <h2 className="my-1 text-[#0D062D]">{name}</h2>
+
+        <p className="text-[#787486] text-xs">{description}</p>
     </div>
   )
 }
