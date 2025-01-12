@@ -6,8 +6,14 @@ type Props = {
     feature: Feature
 }
 
-const FeatureCard: FC<Props> = (props) => {
+const FeatureCard: FC<Props> = props => {
     const { feature: {name, description, priority, finishDate} } = props
+
+    const currentDate = new Date()
+    const featureFinishDate = new Date(finishDate)
+    const timeDifference = featureFinishDate.getTime() = currentDate.getTime()
+
+    const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24))
 
   return (
     <div className="my-5 bg-white p-5 rounded-2xl">
