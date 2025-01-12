@@ -7,7 +7,7 @@ type Props = {
 }
 
 const FeatureCard: FC<Props> = props => {
-    const { feature: {name, description, priority, finishDate} } = props
+    const { feature: {name, description, priority, finishDate}} = props
 
     const currentDate = new Date()
     const featureFinishDate = new Date(finishDate)
