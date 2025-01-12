@@ -2,6 +2,7 @@
 
 import AddBoardForm from "@/components/AddBoardForm/AddBoardForm"
 import AddFeatureForm from "@/components/AddFeatureForm/AddFeatureForm"
+import FeatureCard from "@/components/FeatureCard/FeatureCard"
 import Modal from "@/components/Modal/Modal"
 import ProjectBoard from "@/components/ProjectBoard/ProjectBoard"
 import { Project } from "@/models/projects"
@@ -112,7 +113,7 @@ const ProjectItem = () => {
                         <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
 
                         <div>
-
+                            <FeatureCard   />
                         </div>
                     </div>
                 ))}
