@@ -113,7 +113,9 @@ const ProjectItem = () => {
                         <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
 
                         <div>
-                            <FeatureCard   />
+                            {projectBoard.feature.map(feature => (
+                                <FeatureCard />
+                            ))}
                         </div>
                     </div>
                 ))}
