@@ -114,7 +114,7 @@ const ProjectItem = () => {
 
                         <div>
                             {projectBoard.feature.map(feature => (
-                                <FeatureCard />
+                                <FeatureCard key={feature.id} feature={feature} />
                             ))}
                         </div>
                     </div>
