@@ -1,6 +1,13 @@
-import React from 'react'
+import { Feature } from "@/models/projects"
+import React, { FC } from 'react'
 
-const FeatureCard = () => {
+type Props = {
+    feature: Feature
+}
+
+const FeatureCard: FC<Props> = (props) => {
+    const { feature: {name, description, priority, finishDate} } = props
+
   return (
     <div>FeatureCard</div>
   )
