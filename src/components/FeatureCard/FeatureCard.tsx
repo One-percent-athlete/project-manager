@@ -1,5 +1,6 @@
 import { Feature } from "@/models/projects"
 import React, { FC } from 'react'
+import { BiSolidTimeFive } from "react-icons/bi"
 
 type Props = {
     feature: Feature
@@ -13,10 +14,14 @@ const FeatureCard: FC<Props> = (props) => {
         <span className="bg-[#dfa87433] text-[#D58D49] rounded-[4px] px-[6px] py-1 font-medium text-xs">
             {priority}
         </span>
-
         <h2 className="my-1 text-[#0D062D]">{name}</h2>
-
         <p className="text-[#787486] text-xs">{description}</p>
+        <div className="mt-7 flex items-center justify-between">
+            <p className="text-xs flex items-center bg-purple-200 px-2 py-1 text-purple-800 font-medium">
+                <BiSolidTimeFive />
+                {daysLeft} Days left
+            </p>
+        </div>
     </div>
   )
 }
