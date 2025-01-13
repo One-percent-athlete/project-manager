@@ -116,16 +116,16 @@ const ProjectItem = () => {
                 {provided => (
                     <div className="flex gap-6 items-start">
                         {project.projectBoards.map(projectBoard => (
-                            <Draggable
-                            <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
-                                <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
+                            <Draggable {provided => <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
+                            <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
 
-                                <div>
-                                    {projectBoard.feature.map(feature => (
-                                        <FeatureCard key={feature.id} feature={feature} />
-                                    ))}
-                                </div>
+                            <div>
+                                {projectBoard.feature.map(feature => (
+                                    <FeatureCard key={feature.id} feature={feature} />
+                                ))}
                             </div>
+                        </div>}
+                            
                         ))}
                     </div>
                 )}
