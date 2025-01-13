@@ -95,6 +95,10 @@ const ProjectItem = () => {
 
     const toggleAddFeatureForm = () => setIsAddFeatureFormVisible(prevState => !prevState)
 
+    const onDragEnd = () => {
+
+    }
+
     return (
     <>
         <Modal isVisible={isAddBoardFormVisible || isAddFeatureFormVisible } />
@@ -108,19 +112,7 @@ const ProjectItem = () => {
         </div>
 
         <DragDropContext onDragEnd={onDragEnd} >
-        <div className="flex gap-6 items-start">
-            {project.projectBoards.map(projectBoard => (
-                <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
-                    <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
-
-                    <div>
-                        {projectBoard.feature.map(feature => (
-                            <FeatureCard key={feature.id} feature={feature} />
-                        ))}
-                    </div>
-                </div>
-            ))}
-        </div>
+        
 
         <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
             <AiFillPlusCircle className="text-6xl" />
