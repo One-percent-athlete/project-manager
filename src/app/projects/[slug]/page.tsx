@@ -112,7 +112,7 @@ const ProjectItem = () => {
         </div>
 
         <DragDropContext onDragEnd={onDragEnd} >
-            <Droppable>
+            <Droppable droppableId="board-itmes" direction="horizontal" type="status">
                 <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
                     <AiFillPlusCircle className="text-6xl" />
                 </div>
