@@ -9,7 +9,7 @@ import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
-import { DragDropContext } from "react-beautiful-dnd"
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
 import { AiFillPlusCircle } from "react-icons/ai"
 
@@ -115,18 +115,18 @@ const ProjectItem = () => {
             <Droppable droppableId="board-itmes" direction="horizontal" type="status">
                 {provided => (
                     <div className="flex gap-6 items-start">
-            {project.projectBoards.map(projectBoard => (
-                <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
-                    <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
+                        {project.projectBoards.map(projectBoard => (
+                            <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
+                                <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
 
-                    <div>
-                        {projectBoard.feature.map(feature => (
-                            <FeatureCard key={feature.id} feature={feature} />
+                                <div>
+                                    {projectBoard.feature.map(feature => (
+                                        <FeatureCard key={feature.id} feature={feature} />
+                                    ))}
+                                </div>
+                            </div>
                         ))}
                     </div>
-                </div>
-            ))}
-            </div>
                 )}
                 <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
                     <AiFillPlusCircle className="text-6xl" />
