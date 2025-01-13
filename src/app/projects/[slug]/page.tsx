@@ -107,7 +107,7 @@ const ProjectItem = () => {
             <p className="text-base text-gray-600">{project?.description}</p> 
         </div>
 
-        <DragDropContext>
+        <DragDropContext onDragEnd={onDragEnd} >
         <div className="flex gap-6 items-start">
             {project.projectBoards.map(projectBoard => (
                 <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
