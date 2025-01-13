@@ -9,7 +9,7 @@ import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
-import { DragDropContext } from "react-beautiful-dnd"
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
 import { AiFillPlusCircle } from "react-icons/ai"
 
@@ -112,11 +112,11 @@ const ProjectItem = () => {
         </div>
 
         <DragDropContext onDragEnd={onDragEnd} >
-        
-
-        <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
-            <AiFillPlusCircle className="text-6xl" />
-        </div>
+            <Droppable droppableId="">
+                <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
+                    <AiFillPlusCircle className="text-6xl" />
+                </div>
+            </Droppable>
 
         </DragDropContext>
     </>)
