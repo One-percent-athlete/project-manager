@@ -115,8 +115,7 @@ const ProjectItem = () => {
             <Drappable droppableId="board-itmes" direction="horizontal" type="status">
                 {provided => (
                     <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
-                        {project.projectBoards.map(projectBoard => (
-                            <Draggable {provided => 
+                        {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map(projectBoard => (
                             <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
                                 <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
 
@@ -126,8 +125,7 @@ const ProjectItem = () => {
                                     ))}
                                 </div>
                             </div>
-                            }
-                        ))}
+                            ))}
                     </div>
                 )
                 <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
