@@ -112,9 +112,9 @@ const ProjectItem = () => {
         </div>
 
         <DragDropContext onDragEnd={onDragEnd} >
-            <Draggable droppableId="board-itmes" direction="horizontal" type="status">
+            <Drappable droppableId="board-itmes" direction="horizontal" type="status">
                 {provided => (
-                    <div className="flex gap-6 items-start">
+                    <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
                         {project.projectBoards.map(projectBoard => (
                             <Draggable {provided => 
                             <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
@@ -132,8 +132,8 @@ const ProjectItem = () => {
                 )
                 <div onClick={toggleAddBoardForm} className="grid place-content-center hover:bg-[#f5f5f5] cursor-pointer rounded-2xl border-4 border-dotted flex-none w-[354px] h-20 py-7">
                     <AiFillPlusCircle className="text-6xl" />
-                </div>}
-            </Draggable>
+                </div>)}
+            </Drappable>
             
 
         </DragDropContext>
