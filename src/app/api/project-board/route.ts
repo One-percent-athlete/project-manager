@@ -43,7 +43,25 @@ export async function PATCH(req: Request, res: Response) {
     const { projectId, sourceIndex, destinationIndex, type, sourceBoardId, destinationBoardId } = await req.json()
 
     try {
-        const projectBoards = await prisma.
+        if (type === "status") {
+            const projectBoards = await prisma.projectBoard.findMany({
+                where: { projectId },
+                orderBy: { order: "asc" },
+
+            })
+
+            const sourceBoard = projectBoards[sourceIndex]
+            const destinationBoard = projectBoards[destinationIndex]
+
+            await prisma.projectBoard.update({
+                where: {
+                    id: sourceBoard.id
+                },
+                data: {
+                    order: destinationBoard.order
+                }
+            })
+        }
     } catch (error) {
         console.log(error);
         return new NextResponse("Error Updating", { status: 500 })
