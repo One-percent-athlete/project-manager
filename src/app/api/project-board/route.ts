@@ -70,6 +70,8 @@ export async function PATCH(req: Request, res: Response) {
                     order: sourceBoard.order
                 }
             })
+
+            return NextResponse.json("Update successful", { status: 200, statusText: "Successful" })
         }
     } catch (error) {
         console.log(error);
