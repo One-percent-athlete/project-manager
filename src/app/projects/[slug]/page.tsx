@@ -121,8 +121,15 @@ const ProjectItem = () => {
                     destinationIndex: destination.index,
                     type,
                 })
+
+                toast.success(statusText)
             } catch (error) {
-                
+                setProject({
+                    ...project,
+                    projectBoards: project.projectBoards,
+                    
+                })
+                toast.error("Update not successful")
             }
         }
     }
