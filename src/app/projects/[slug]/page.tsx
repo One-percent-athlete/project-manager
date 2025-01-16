@@ -96,47 +96,53 @@ const ProjectItem = () => {
     const toggleAddFeatureForm = () => setIsAddFeatureFormVisible(prevState => !prevState)
 
     const onDragEnd = (result: DropResult) => {
-        console.log(result);
+        const { source, destination, type } = result
+        if (!destination) return
+        if (type === "status") {
+            const movedBoard = project.projectBoards[source.index]
+            const updatedProjectBoards = Array.from(project.projectBoards)
+
+            updatedProjectBoards.splice(source.index, 1)
+        }
     }
 
     return (
-    <>
-        <Modal isVisible={isAddBoardFormVisible || isAddFeatureFormVisible } />
+        <>
+            <Modal isVisible={isAddBoardFormVisible || isAddFeatureFormVisible } />
 
-        <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={handleFeatureChange} handleFeatureSubmit={handleFeatureSubmit} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={toggleAddFeatureForm} />
+            <AddFeatureForm featureFormData={featureFormData} handleFeatureChange={handleFeatureChange} handleFeatureSubmit={handleFeatureSubmit} isVisible={isAddFeatureFormVisible} toggleAddFeatureForm={toggleAddFeatureForm} />
 
-        <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
-        <div className="mb-6">
-            <h4 className="text-2xl font-bold">{project?.name}</h4> 
-            <p className="text-base text-gray-600">{project?.description}</p> 
-        </div>
+            <AddBoardForm isVisible={isAddBoardFormVisible} toggleAddBoardForm={toggleAddBoardForm} boardData={boardData} handleBoardSubmit={handleBoardSubmit} isSubmitting={isSubmitting} updateBoardHandler={updateBoardHandler} />
+            <div className="mb-6">
+                <h4 className="text-2xl font-bold">{project?.name}</h4> 
+                <p className="text-base text-gray-600">{project?.description}</p> 
+            </div>
 
-        <DragDropContext onDragEnd={onDragEnd} >
-            <Droppable droppableId="board-itmes" direction="horizontal" type="status">
-                {provided => (
-                    <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
-                        {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map((projectBoard, index) => (
-                            <Draggable index={index} draggableId={projectBoard.id} key={projectBoard.id}>
-                                { provided => (
-                                    <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
-                                    <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
-    
-                                    <div>
-                                        {projectBoard.feature.map(feature => (
-                                            <FeatureCard key={feature.id} feature={feature} />
-                                        ))}
+            <DragDropContext onDragEnd={onDragEnd} >
+                <Droppable droppableId="board-itmes" direction="horizontal" type="status">
+                    {provided => (
+                        <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
+                            {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map((projectBoard, index) => (
+                                <Draggable index={index} draggableId={projectBoard.id} key={projectBoard.id}>
+                                    { provided => (
+                                        <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
+                                        <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
+        
+                                        <div>
+                                            {projectBoard.feature.map(feature => (
+                                                <FeatureCard key={feature.id} feature={feature} />
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                                )}
-                            </Draggable>
-                            ))}
-                    </div>
-                )}
-            </Droppable>
-            
-
-        </DragDropContext>
-    </>)
+                                    )}
+                                </Draggable>
+                                ))}
+                        </div>
+                    )}
+                </Droppable>
+            </DragDropContext>
+        </>
+    )
 }
 export default ProjectItem
 
