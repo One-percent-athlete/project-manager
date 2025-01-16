@@ -95,7 +95,7 @@ const ProjectItem = () => {
 
     const toggleAddFeatureForm = () => setIsAddFeatureFormVisible(prevState => !prevState)
 
-    const onDragEnd = (result: DropResult) => {
+    const onDragEnd = async (result: DropResult) => {
         const { source, destination, type } = result
         if (!destination) return
         if (type === "status") {
@@ -115,7 +115,12 @@ const ProjectItem = () => {
             })
 
             try {
-                
+                const { statusText } = await axios.patch("/api/project-board", {
+                    projectId: project.id,
+                    sourceIndex: source.index,
+                    destinationIndex: destination.index,
+                    type,
+                })
             } catch (error) {
                 
             }
