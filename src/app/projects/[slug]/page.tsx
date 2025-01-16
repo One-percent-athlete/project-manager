@@ -103,6 +103,16 @@ const ProjectItem = () => {
             const updatedProjectBoards = Array.from(project.projectBoards)
 
             updatedProjectBoards.splice(source.index, 1)
+            updatedProjectBoards.splice(destination.index, 0, movedBoard)
+
+            setProject({
+                ...project,
+                projectBoards: updatedProjectBoards.map((board, index: number) => ({
+                    ...board,
+                    order: index + 1,
+                    
+                }))
+            })
         }
     }
 
