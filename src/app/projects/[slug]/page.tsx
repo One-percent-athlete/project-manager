@@ -9,7 +9,7 @@ import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
+import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
 import { AiFillPlusCircle } from "react-icons/ai"
 
@@ -95,8 +95,8 @@ const ProjectItem = () => {
 
     const toggleAddFeatureForm = () => setIsAddFeatureFormVisible(prevState => !prevState)
 
-    const onDragEnd = () => {
-
+    const onDragEnd = (result: DropResult) => {
+        console.log(result);
     }
 
     return (
