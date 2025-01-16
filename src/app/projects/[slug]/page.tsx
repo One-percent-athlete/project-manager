@@ -115,16 +115,20 @@ const ProjectItem = () => {
             <Droppable droppableId="board-itmes" direction="horizontal" type="status">
                 {provided => (
                     <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
-                        {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map(projectBoard => (
-                            <div key={projectBoard.id} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
-                                <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
-
-                                <div>
-                                    {projectBoard.feature.map(feature => (
-                                        <FeatureCard key={feature.id} feature={feature} />
-                                    ))}
+                        {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map((projectBoard, index) => (
+                            <Draggable index={index} draggableId={projectBoard.id} key={projectBoard.id}>
+                                { provided => (
+                                    <div className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
+                                    <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
+    
+                                    <div>
+                                        {projectBoard.feature.map(feature => (
+                                            <FeatureCard key={feature.id} feature={feature} />
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                                )}
+                            </Draggable>
                             ))}
                     </div>
                 )}
