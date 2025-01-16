@@ -40,5 +40,12 @@ export async function POST(req: Request, res:Response) {
 }
 
 export async function PATCH(req: Request, res: Response) {
-    const {} = await req.json()
+    const { projectId, sourceIndex, destinationIndex, type, sourceBoardId, destinationBoardId } = await req.json()
+
+    try {
+        const projectBoards = await prisma.
+    } catch (error) {
+        console.log(error);
+        return new NextResponse("Error Updating", { status: 500 })
+    }
 }
