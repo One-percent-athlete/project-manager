@@ -9,7 +9,7 @@ import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
-import { DragDropContext, Draggable } from "react-beautiful-dnd"
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
 import { AiFillPlusCircle } from "react-icons/ai"
 
@@ -112,7 +112,7 @@ const ProjectItem = () => {
         </div>
 
         <DragDropContext onDragEnd={onDragEnd} >
-            <Drappable droppableId="board-itmes" direction="horizontal" type="status">
+            <Droppable droppableId="board-itmes" direction="horizontal" type="status">
                 {provided => (
                     <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
                         {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map(projectBoard => (
@@ -128,7 +128,7 @@ const ProjectItem = () => {
                             ))}
                     </div>
                 )}
-            </Drappable>
+            </Droppable>
             
 
         </DragDropContext>
