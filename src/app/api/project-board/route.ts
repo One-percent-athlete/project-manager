@@ -38,3 +38,7 @@ export async function POST(req: Request, res:Response) {
         return new NextResponse("Creation Error", {status: 500})
     }
 }
+
+export async function PATCH(req: Request, res: Response) {
+    const {} = await req.json()
+}

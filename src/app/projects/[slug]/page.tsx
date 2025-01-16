@@ -110,9 +110,15 @@ const ProjectItem = () => {
                 projectBoards: updatedProjectBoards.map((board, index: number) => ({
                     ...board,
                     order: index + 1,
-                    
+
                 }))
             })
+
+            try {
+                
+            } catch (error) {
+                
+            }
         }
     }
 
@@ -132,7 +138,7 @@ const ProjectItem = () => {
                 <Droppable droppableId="board-itmes" direction="horizontal" type="status">
                     {provided => (
                         <div className="flex gap-6 items-start" {...provided.droppableProps} ref={provided.innerRef}>
-                            {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map((projectBoard, index) => (
+                            {project.projectBoards.sort((a: any, b: any) => (a.order - b.order)).map((projectBoard, index) => (
                                 <Draggable index={index} draggableId={projectBoard.id} key={projectBoard.id}>
                                     { provided => (
                                         <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
