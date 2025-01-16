@@ -118,7 +118,7 @@ const ProjectItem = () => {
                         {project.projectBoards.sort((a: any, b: any) => (a.order = b.order)).map((projectBoard, index) => (
                             <Draggable index={index} draggableId={projectBoard.id} key={projectBoard.id}>
                                 { provided => (
-                                    <div className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
+                                    <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
                                     <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
     
                                     <div>
