@@ -141,6 +141,10 @@ const ProjectItem = () => {
 
                     const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
 
+                    if (!destinationBoard) return 
+
+                    destinationBoard.feature.splice(destination.index, 0, movedFeature)
+                    
                 }
             })
         }
