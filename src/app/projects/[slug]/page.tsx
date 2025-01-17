@@ -141,9 +141,9 @@ const ProjectItem = () => {
 
                     const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
 
-                    if (!destinationBoard) return 
+                    // if (!destinationBoard) return 
 
-                    destinationBoard.feature.splice(destination.index, 0, movedFeature)
+                    destinationBoard!.feature.splice(destination.index, 0, movedFeature)
 
                     return board
                 } else if (board.id === destinationBoardId) {
@@ -156,8 +156,8 @@ const ProjectItem = () => {
             const updatedProject = {
                 ...project,
                 projectBoards: updatedProjectBoards,
-                
             }
+            setProject(updatedProject)
         }
     }
 
