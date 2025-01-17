@@ -127,7 +127,7 @@ const ProjectItem = () => {
                 setProject({
                     ...project,
                     projectBoards: project.projectBoards,
-                    
+
                 })
                 toast.error("Update not successful")
             }
@@ -155,12 +155,18 @@ const ProjectItem = () => {
                                     { provided => (
                                         <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} className="bg-[#f5f5f5] flex-shrink-0 w-[354px] rounded-2xl py-3 px-6">
                                         <ProjectBoard boardHeading={projectBoard.status} boardId={projectBoard.id} numFeatures={projectBoard.feature.length} setSelectBoardId={setSelectBoardId} toggleAddFeature={toggleAddFeatureForm} />
-        
-                                        <div>
-                                            {projectBoard.feature.map(feature => (
-                                                <FeatureCard key={feature.id} feature={feature} />
-                                            ))}
-                                        </div>
+                                        
+                                        <Droppable droppableId={projectBoard.id} type="project">
+                                            { provided => (
+                                                <div ref={provided.innerRef} {...provided.droppableProps}>
+                                                    {projectBoard.feature.map(feature => (
+                                                        <Draggable>
+                                                            <FeatureCard key={feature.id} feature={feature} />
+                                                        </Draggable>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </Droppable>
                                     </div>
                                     )}
                                 </Draggable>
