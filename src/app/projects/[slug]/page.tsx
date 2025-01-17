@@ -5,6 +5,7 @@ import AddFeatureForm from "@/components/AddFeatureForm/AddFeatureForm"
 import FeatureCard from "@/components/FeatureCard/FeatureCard"
 import Modal from "@/components/Modal/Modal"
 import ProjectBoard from "@/components/ProjectBoard/ProjectBoard"
+import prisma from "@/libs/prisma"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
@@ -131,33 +132,51 @@ const ProjectItem = () => {
                 })
                 toast.error("Update not successful")
             }
-        } else if ( type === "feature" ) {
-            const { index: sourceIndex, droppableId: sourceBoardId } = source
-            const destinationBoardId = destination.droppableId
+        } 
 
-            const updatedProjectBoards = project.projectBoards.map(board => {
-                if(board.id === sourceBoardId) {
-                    const movedFeature = board.feature.splice(sourceIndex, 1)[0]
+        // if ( type === "feature" ) {
+        //     const { index: sourceIndex, droppableId: sourceBoardId } = source
+        //     const destinationBoardId = destination.droppableId
 
-                    const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
+        //     const updatedProjectBoards = project.projectBoards.map(board => {
+        //         if(board.id === sourceBoardId) {
+        //             const movedFeature = board.feature.splice(sourceIndex, 1)[0]
 
-                    // if (!destinationBoard) return 
+        //             const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
 
-                    destinationBoard!.feature.splice(destination.index, 0, movedFeature)
+        //             // if (!destinationBoard) return 
 
-                    return board
-                } else if (board.id === destinationBoardId) {
-                    return board
-                } else {
-                    return board 
-                }
-            })
+        //             destinationBoard!.feature.splice(destination.index, 0, movedFeature)
 
-            const updatedProject = {
-                ...project,
-                projectBoards: updatedProjectBoards,
+        //             return board
+        //         } else if (board.id === destinationBoardId) {
+        //             return board
+        //         } else {
+        //             return board 
+        //         }
+        //     })
+
+        //     const updatedProject = {
+        //         ...project,
+        //         projectBoards: updatedProjectBoards,
+        //     }
+        //     setProject(updatedProject)
+
+        //     try {
+                
+        //     } catch (error) {
+                
+        //     }
+        // }
+
+        if ( type === "feature") {
+            const project = await prisma.project.findUnique({
+                where: {
+                    id: projectId,
+                },
+                include: { projectBoards: { include: { feature: true}}}
             }
-            setProject(updatedProject)
+            )
         }
     }
 
