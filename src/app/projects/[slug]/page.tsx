@@ -131,6 +131,16 @@ const ProjectItem = () => {
                 })
                 toast.error("Update not successful")
             }
+        } else if ( type === "feature" ) {
+            const { index: sourceIndex, droppableId: sourceBoardId } = source
+            const destinationBoardId = destination.droppableId
+
+            const updatedProjectBoards = project.projectBoards.map(board => {
+                if(board.id === sourceBoardId) {
+                    const movedFeature = board.features.splice(sourceIndex, 1)[0]
+
+                }
+            })
         }
     }
 
@@ -168,6 +178,7 @@ const ProjectItem = () => {
                                                             )}
                                                         </Draggable>
                                                     ))}
+                                                    {provided.placeholder}
                                                 </div>
                                             )}
                                         </Droppable>
