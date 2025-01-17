@@ -161,7 +161,9 @@ const ProjectItem = () => {
                                                 <div ref={provided.innerRef} {...provided.droppableProps}>
                                                     {projectBoard.feature.map((feature, index) => (
                                                         <Draggable key={feature.id} draggableId={feature.id} index={index}>
-                                                            <FeatureCard key={feature.id} feature={feature} />
+                                                            { provided => (
+                                                                <FeatureCard key={feature.id} feature={feature} />
+                                                            )}
                                                         </Draggable>
                                                     ))}
                                                 </div>
