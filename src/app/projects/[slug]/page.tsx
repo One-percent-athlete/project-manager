@@ -153,6 +153,11 @@ const ProjectItem = () => {
                 }
             })
 
+            const updatedProject = {
+                ...project,
+                projectBoards: updatedProjectBoards,
+                
+            }
         }
     }
 
