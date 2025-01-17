@@ -144,9 +144,15 @@ const ProjectItem = () => {
                     if (!destinationBoard) return 
 
                     destinationBoard.feature.splice(destination.index, 0, movedFeature)
-                    
+
+                    return board
+                } else if (board.id === destinationBoardId) {
+                    return board
+                } else {
+                    return board 
                 }
             })
+
         }
     }
 
