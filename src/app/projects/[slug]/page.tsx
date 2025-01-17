@@ -9,6 +9,7 @@ import prisma from "@/libs/prisma"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
+import { NextResponse } from "next/server"
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
@@ -177,6 +178,9 @@ const ProjectItem = () => {
                 include: { projectBoards: { include: { feature: true}}}
             }
             )
+            if (!project) return new NextResponse("Project not found", { status: 500})
+
+            const sourceBoard = project.projectBoards.find(board => board.id === sourceBoardId)
         }
     }
 
