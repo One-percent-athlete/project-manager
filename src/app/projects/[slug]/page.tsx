@@ -137,7 +137,9 @@ const ProjectItem = () => {
 
             const updatedProjectBoards = project.projectBoards.map(board => {
                 if(board.id === sourceBoardId) {
-                    const movedFeature = board.features.splice(sourceIndex, 1)[0]
+                    const movedFeature = board.feature.splice(sourceIndex, 1)[0]
+
+                    const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
 
                 }
             })
