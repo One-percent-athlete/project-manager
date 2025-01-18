@@ -159,9 +159,18 @@ const ProjectItem = () => {
             setProject(updatedProject)
 
             try {
-                
+                const { statusText } = await axios.patch("/api/project-board", {
+                    type: "feature",
+                    projectBoardId: project.id,
+                    sourceIndex,
+                    destinationIndex: destination.index,
+                    sourceBoardId,
+                    destinationBoardId
+                })
+
+                toast.success(statusText)
             } catch (error) {
-                
+                toast.error("Update failed")
             }
         }
     }
