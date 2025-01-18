@@ -161,7 +161,7 @@ const ProjectItem = () => {
             try {
                 const { statusText } = await axios.patch("/api/project-board", {
                     type: "feature",
-                    projectBoardId: project.id,
+                    projectId: project.id,
                     sourceIndex,
                     destinationIndex: destination.index,
                     sourceBoardId,
