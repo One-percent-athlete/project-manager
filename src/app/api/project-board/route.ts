@@ -125,6 +125,11 @@ export async function PATCH(req: Request, res: Response) {
                 })
 
                 sourceBoard.features.splice(sourceIndex, 1)
+
+                await prisma.projectBoard.update({
+                    where: { id: sourceBoardId },
+                    data: { features: { set: sourceBoardId }}
+                })
             }
         }
     } catch (error) {
