@@ -128,7 +128,7 @@ export async function PATCH(req: Request, res: Response) {
 
                 await prisma.projectBoard.update({
                     where: { id: sourceBoardId },
-                    data: { features: { set: sourceBoardId }}
+                    data: { features: { set: sourceBoard.features }}
                 })
             }
         }
