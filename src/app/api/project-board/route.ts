@@ -105,6 +105,11 @@ export async function PATCH(req: Request, res: Response) {
                         feature.order = index + 1
                     }
                 })
+
+                await prisma.projectBoard.update({
+                    where: { id: sourceBoardId },
+                    data: { order: destinationBoardId }
+                })
             }
         }
     } catch (error) {
