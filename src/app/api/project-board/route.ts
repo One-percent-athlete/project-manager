@@ -130,6 +130,11 @@ export async function PATCH(req: Request, res: Response) {
                     where: { id: sourceBoardId },
                     data: { features: { set: sourceBoard.features }}
                 })
+
+                return NextResponse.json("Update Successful", {
+                    status: 200,
+                    statusText: "Successful"
+                })
             }
         }
     } catch (error) {
