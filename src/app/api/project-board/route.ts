@@ -102,7 +102,7 @@ export async function PATCH(req: Request, res: Response) {
 
                 sourceFeatures.forEach((feature, index) => {
                     if ( index >= Math.min(sourceIndex, destinationIndex) && index <= Math.max(sourceIndex, destinationIndex)) {
-                        
+                        feature.order = index + 1
                     }
                 })
             }
