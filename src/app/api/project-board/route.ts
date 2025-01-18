@@ -1,6 +1,7 @@
 import prisma from "@/libs/prisma"
 import { connect } from "http2"
 import { NextResponse } from "next/server"
+import { features } from "process"
 
 export async function POST(req: Request, res:Response) {
     const {status, projectId, slug} = await req.json()
@@ -116,7 +117,12 @@ export async function PATCH(req: Request, res: Response) {
                     data: { order: destinationOrder }
                 })
             } else {
+                destinationBoard.features.splice(destinationIndex, 0, movedFeature)
 
+                await prisma.projectBoard.update({
+                    where: { id: sourceBoardId },
+                    data: { features: { set: destinationBoard.features}}
+                })
             }
         }
     } catch (error) {
