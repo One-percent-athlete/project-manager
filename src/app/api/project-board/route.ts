@@ -110,6 +110,13 @@ export async function PATCH(req: Request, res: Response) {
                     where: { id: sourceBoardId },
                     data: { order: destinationBoardId }
                 })
+
+                await prisma.feature.update({
+                    where: { id: movedFeature.id },
+                    data: { order: destinationOrder }
+                })
+            } else {
+
             }
         }
     } catch (error) {
