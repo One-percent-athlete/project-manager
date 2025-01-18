@@ -73,6 +73,21 @@ export async function PATCH(req: Request, res: Response) {
 
             return NextResponse.json("Update successful", { status: 200, statusText: "Successful" })
         }
+
+        if ( type === "feature") {
+            const project = await prisma.project.findUnique({
+                where: {
+                    id: projectId,
+                },
+                include: { projectBoards: { include: { features: true}}}
+            }
+            )
+            if (!project) return new NextResponse("Project not found", { status: 500})
+
+            const sourceBoard = project.projectBoards.find(board => board.id === sourceBoardId)
+
+            const destinationBoard = project.projectBoard.find(board => board.id === destinationBoardId)
+        }
     } catch (error) {
         console.log(error);
         return new NextResponse("Error Updating", { status: 500 })
