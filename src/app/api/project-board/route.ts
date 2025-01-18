@@ -123,6 +123,8 @@ export async function PATCH(req: Request, res: Response) {
                     where: { id: sourceBoardId },
                     data: { features: { set: destinationBoard.features}}
                 })
+
+                sourceBoard.features.splice(sourceIndex, 1)
             }
         }
     } catch (error) {
