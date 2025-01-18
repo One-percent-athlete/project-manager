@@ -5,15 +5,12 @@ import AddFeatureForm from "@/components/AddFeatureForm/AddFeatureForm"
 import FeatureCard from "@/components/FeatureCard/FeatureCard"
 import Modal from "@/components/Modal/Modal"
 import ProjectBoard from "@/components/ProjectBoard/ProjectBoard"
-import prisma from "@/libs/prisma"
 import { Project } from "@/models/projects"
 import axios from "axios"
 import { useParams } from "next/navigation"
-import { NextResponse } from "next/server"
 import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd"
 import toast from "react-hot-toast"
-import { AiFillPlusCircle } from "react-icons/ai"
 
 const ProjectItem = () => {
     const [project, setProject] = useState<null | Project>(null)

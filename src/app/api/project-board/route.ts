@@ -86,7 +86,9 @@ export async function PATCH(req: Request, res: Response) {
 
             const sourceBoard = project.projectBoards.find(board => board.id === sourceBoardId)
 
-            const destinationBoard = project.projectBoard.find(board => board.id === destinationBoardId)
+            const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
+
+            if(!sourceBoard || !destinationBoard) return new NextResponse("Error Updating")
         }
     } catch (error) {
         console.log(error);
