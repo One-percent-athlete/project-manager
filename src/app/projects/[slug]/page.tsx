@@ -133,59 +133,58 @@ const ProjectItem = () => {
                 })
                 toast.error("Update not successful")
             }
-        } 
+        } else if ( type === "feature" ) {
+            const { index: sourceIndex, droppableId: sourceBoardId } = source
+            const destinationBoardId = destination.droppableId
 
-        // if ( type === "feature" ) {
-        //     const { index: sourceIndex, droppableId: sourceBoardId } = source
-        //     const destinationBoardId = destination.droppableId
+            const updatedProjectBoards = project.projectBoards.map(board => {
+                if(board.id === sourceBoardId) {
+                    const movedFeature = board.feature.splice(sourceIndex, 1)[0]
 
-        //     const updatedProjectBoards = project.projectBoards.map(board => {
-        //         if(board.id === sourceBoardId) {
-        //             const movedFeature = board.feature.splice(sourceIndex, 1)[0]
+                    const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
 
-        //             const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
+                    // if (!destinationBoard) return 
 
-        //             // if (!destinationBoard) return 
+                    destinationBoard!.feature.splice(destination.index, 0, movedFeature)
 
-        //             destinationBoard!.feature.splice(destination.index, 0, movedFeature)
+                    return board
+                } else if (board.id === destinationBoardId) {
+                    return board
+                } else {
+                    return board 
+                }
+            })
 
-        //             return board
-        //         } else if (board.id === destinationBoardId) {
-        //             return board
-        //         } else {
-        //             return board 
-        //         }
-        //     })
-
-        //     const updatedProject = {
-        //         ...project,
-        //         projectBoards: updatedProjectBoards,
-        //     }
-        //     setProject(updatedProject)
-
-        //     try {
-                
-        //     } catch (error) {
-                
-        //     }
-        // }
-
-        if ( type === "feature") {
-            const project = await prisma.project.findUnique({
-                where: {
-                    id: projectId,
-                },
-                include: { projectBoards: { include: { feature: true}}}
+            const updatedProject = {
+                ...project,
+                projectBoards: updatedProjectBoards,
             }
-            )
-            if (!project) return new NextResponse("Project not found", { status: 500})
+            setProject(updatedProject)
 
-            const sourceBoard = project.projectBoards.find(board => board.id === sourceBoardId)
-
-            const destinationBoard = project.projectBoard.find(board => board.id === destinationBoardId)
-
-            
+            try {
+                
+            } catch (error) {
+                
+            }
         }
+
+
+        // if ( type === "feature") {
+        //     const project = await prisma.project.findUnique({
+        //         where: {
+        //             id: projectId,
+        //         },
+        //         include: { projectBoards: { include: { features: true}}}
+        //     }
+        //     )
+        //     if (!project) return new NextResponse("Project not found", { status: 500})
+
+        //     const sourceBoard = project.projectBoards.find(board => board.id === sourceBoardId)
+
+        //     const destinationBoard = project.projectBoard.find(board => board.id === destinationBoardId)
+
+
+        // }
     }
 
     return (
