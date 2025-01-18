@@ -98,7 +98,11 @@ export async function PATCH(req: Request, res: Response) {
 
                 const destinationOrder = sourceFeatures[destinationIndex].order || destinationIndex + 
                 
-                
+                movedFeature.order = destinationOrder
+
+                sourceFeatures.forEach((feature, index) => {
+                    if ( index >= Math.min(sourceIndex, destinationIndex) && index)
+                })
             }
         }
     } catch (error) {
