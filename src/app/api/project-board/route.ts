@@ -88,7 +88,18 @@ export async function PATCH(req: Request, res: Response) {
 
             const destinationBoard = project.projectBoards.find(board => board.id === destinationBoardId)
 
-            if(!sourceBoard || !destinationBoard) return new NextResponse("Error Updating")
+            if(!sourceBoard || !destinationBoard) return new NextResponse("Error Updating", { status: 500 })
+
+            const movedFeature = sourceBoard.features[sourceIndex]
+
+            if (sourceBoardId === destinationBoardId) {
+                const sourceFeatures = [...sourceBoard.features]
+                const movedFeature = sourceFeatures.splice(sourceIndex, 1)[0]
+
+                const destinationOrder = sourceFeatures[destinationIndex].order || destinationIndex + 
+                
+                
+            }
         }
     } catch (error) {
         console.log(error);
