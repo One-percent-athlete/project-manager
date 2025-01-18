@@ -101,7 +101,9 @@ export async function PATCH(req: Request, res: Response) {
                 movedFeature.order = destinationOrder
 
                 sourceFeatures.forEach((feature, index) => {
-                    if ( index >= Math.min(sourceIndex, destinationIndex) && index)
+                    if ( index >= Math.min(sourceIndex, destinationIndex) && index <= Math.max(sourceIndex, destinationIndex)) {
+                        
+                    }
                 })
             }
         }
