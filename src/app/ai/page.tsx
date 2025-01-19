@@ -12,6 +12,9 @@ const Ai = () => {
     useEffect(() => {
         const fetchUserMessages = async () => {
             const { data } = await axios.get("/api/ai")
+            console.log(data);
+            
+            setChat(data.aiChat)
         }
     }, [])
 
