@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth"
 import { NextResponse } from "next/server"
 import OpenAi from "openai"
 
+const openai = new OpenAi({apiKey: process.env.OPEN_API_KEY})
+
 export async function POST(req: Request, res: Response) {
     const session = await getServerSession(authOptions)
     
