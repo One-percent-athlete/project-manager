@@ -39,3 +39,11 @@ export async function POST(req: Request, res: Response) {
         statusText: "AI Result"
     })
 }
+
+export async function GET(req: Request, res: Response) {
+    const session = await getServerSession(authOptions)
+
+    if (!session || !session.user) return
+    
+    const userId = session?.user.id
+}
