@@ -46,4 +46,14 @@ export async function GET(req: Request, res: Response) {
     if (!session || !session.user) return
     
     const userId = session?.user.id
+
+    const user = await prisma.user.findUnique({
+        where: { id: userId },
+        include: { aiChat: true }
+    })
+
+    return NextResponse.json(user, {
+        status: 200,
+        statusText: "Successful"
+    })
 }
