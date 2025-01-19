@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, FC, FormEvent } from 'react'
 import { MdCancel } from "react-icons/md"
-import Input from "../Inpit/Input"
+import Input from "../Input/Input"
 
 type Props = {
     isVisible: boolean

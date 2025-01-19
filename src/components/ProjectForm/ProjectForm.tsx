@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent } from "react"
 import { MdCancel } from "react-icons/md"
-import Input from "../Inpit/Input"
+import Input from "../Input/Input"
 
 interface ProjectFormProps {
     isVisible: boolean

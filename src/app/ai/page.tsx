@@ -1,5 +1,6 @@
 "use client"
 
+import Input from "@/components/Input/Input"
 import axios from "axios"
 import React, { useEffect, useState } from 'react'
 
@@ -13,8 +14,7 @@ const Ai = () => {
 
     useEffect(() => {
         const fetchUserMessages = async () => {
-            const { data } = await axios.get("/api/ai")
-            console.log(data);
+            const { data } = await axios.get("/api/ai/")
             
             setChat(data.aiChat)
         }
@@ -23,7 +23,11 @@ const Ai = () => {
     }, [])
 
     return (
-        <div>Ai</div>
+        <div>
+            <form className="sticky top-0" onSubmit={() => {}}>
+                <Input type="text" label="Prompt AI" name="prompt" onChange={() => {}} placeholder="Type your prompt" value="" required disabled />
+            </form>
+        </div>
   )
 }
 
