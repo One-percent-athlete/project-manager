@@ -1,3 +1,5 @@
+"use client"
+
 import axios from "axios"
 import React, { useEffect, useState } from 'react'
 
@@ -16,10 +18,12 @@ const Ai = () => {
             
             setChat(data.aiChat)
         }
+
+        fetchUserMessages()
     }, [])
 
     return (
-    <div>Ai</div>
+        <div>Ai</div>
   )
 }
 
