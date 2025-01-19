@@ -57,12 +57,14 @@ model ProjectBoard {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  status String @unique
+  status String
   order Int
-  slug String @unique
+  slug String
   features Feature[]
   project Project @relation(fields: [projectId], references: [id])
   projectId String @db.ObjectId
+
+  @@unique([slug, status, projectId])
 }
 
 enum Priority {
@@ -76,13 +78,15 @@ model Feature {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   name String 
-  slug String @unique
+  slug String 
   description String 
   priority Priority @default(LOW)
   finished_at DateTime
   order Int
   projectBoard ProjectBoard @relation(fields: [projectBoardId], references: [id])
   projectBoardId String @db.ObjectId
+
+  @@unique([slug, projectBoardId])
 }
 
 enum ChatRole {
