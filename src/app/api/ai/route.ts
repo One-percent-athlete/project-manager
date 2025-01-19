@@ -29,7 +29,13 @@ export async function POST(req: Request, res: Response) {
                 role,
                 content,
                 userId: session?.user?.id as string
-            }
+            },
+
         })
     }))
+
+    return NextResponse.json(chatCompletion, {
+        status: 200,
+        statusText: "AI Result"
+    })
 }
