@@ -89,15 +89,15 @@ model Feature {
   @@unique([slug, projectBoardId])
 }
 
-enum ChatRole {
-  user
-  assistant
-}
-
 model AiChat {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   role ChatRole
   content String
   userId String @db.ObjectId
   user User @relation(fields: [userId], references: [id])
+}
+
+enum ChatRole {
+  user
+  assistant
 }
