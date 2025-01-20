@@ -1,5 +1,6 @@
 "use client"
 
+import ChatMessage from "@/components/ChatMessage/ChatMessage"
 import Input from "@/components/Input/Input"
 import axios from "axios"
 import React, { useEffect, useState } from 'react'
@@ -27,6 +28,12 @@ const Ai = () => {
             <form className="sticky top-0" onSubmit={() => {}}>
                 <Input type="text" label="Prompt AI" name="prompt" onChange={() => {}} placeholder="Type your prompt" value="" required disabled />
             </form>
+
+            <div className="mt-10">
+                {chat.map(chatMsg => (
+                    <ChatMessage key={chatMsg.id} role={chatMsg.role} text={chatMsg.content} userImage="" />
+                ))}
+            </div>
         </div>
   )
 }
