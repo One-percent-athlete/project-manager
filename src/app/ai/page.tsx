@@ -4,6 +4,7 @@ import ChatMessage from "@/components/ChatMessage/ChatMessage"
 import Input from "@/components/Input/Input"
 import axios from "axios"
 import React, { FormEvent, useEffect, useState } from 'react'
+import toast from "react-hot-toast"
 
 const Ai = () => {
     const [chat, setChat] = useState<{
@@ -31,9 +32,10 @@ const Ai = () => {
         setIsLoading(true)
 
         try {
-            
+            await axios.post("/api/ai")
         } catch (error) {
-            
+            console.log(error);
+            toast.error("Something went wrong")
         }
     }
 
