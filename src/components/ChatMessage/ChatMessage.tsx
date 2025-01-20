@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { FaRobot } from "react-icons/fa"
 
-type Props {
+type Props = {
     text: string
     role: "user" | "assistant"
     userImage: string
