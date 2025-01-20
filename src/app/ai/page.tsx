@@ -16,10 +16,11 @@ const Ai = () => {
 
     const [userImage, setUserImage] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+    const [promptData, setPromptData] = useState<{prompt: string, role: "user" | "assistant"}>({prompt: "", role: "user"})
 
     useEffect(() => {
         const fetchUserMessages = async () => {
-            const { data } = await axios.get("/api/ai/")
+            const { data } = await axios.get("/api/ai")
             
             setChat(data.aiChat)
         }
@@ -32,7 +33,7 @@ const Ai = () => {
         setIsLoading(true)
 
         try {
-            await axios.post("/api/ai")
+            await axios.post("/api/ai", promptData)
         } catch (error) {
             console.log(error);
             toast.error("Something went wrong")
