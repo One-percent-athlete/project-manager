@@ -3,7 +3,7 @@
 import ChatMessage from "@/components/ChatMessage/ChatMessage"
 import Input from "@/components/Input/Input"
 import axios from "axios"
-import React, { useEffect, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 
 const Ai = () => {
     const [chat, setChat] = useState<{
@@ -12,6 +12,9 @@ const Ai = () => {
         id: string
         userId: string
     }[]>([])
+
+    const [userImage, setUserImage] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         const fetchUserMessages = async () => {
@@ -23,9 +26,20 @@ const Ai = () => {
         fetchUserMessages()
     }, [])
 
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setIsLoading(true)
+
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
+
     return (
         <div>
-            <form className="sticky top-0" onSubmit={() => {}}>
+            <form className="sticky top-0" onSubmit={handleSubmit}>
                 <Input type="text" label="Prompt AI" name="prompt" onChange={() => {}} placeholder="Type your prompt" value="" required disabled />
             </form>
 
