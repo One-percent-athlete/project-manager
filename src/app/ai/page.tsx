@@ -1,5 +1,6 @@
 "use client"
 
+import AnimatedSpinner from "@/components/AnimatedSpinner/AnimatedSpinner"
 import ChatMessage from "@/components/ChatMessage/ChatMessage"
 import Input from "@/components/Input/Input"
 import axios from "axios"
@@ -37,6 +38,9 @@ const Ai = () => {
         } catch (error) {
             console.log(error);
             toast.error("Something went wrong")
+        } finally {
+            setIsLoading(false)
+            setPromptData({prompt: "", role: "user"})
         }
     }
 
@@ -44,6 +48,7 @@ const Ai = () => {
         <div>
             <form className="sticky top-0" onSubmit={handleSubmit}>
                 <Input type="text" label="Prompt AI" name="prompt" onChange={e => setPromptData({...promptData, prompt: e.target.value })} placeholder="Type your prompt" value={promptData.prompt} required disabled={isLoading} />
+                {isLoading && <AnimatedSpinner />}
             </form>
 
             <div className="mt-10">
