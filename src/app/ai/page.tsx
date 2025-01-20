@@ -43,7 +43,7 @@ const Ai = () => {
     return (
         <div>
             <form className="sticky top-0" onSubmit={handleSubmit}>
-                <Input type="text" label="Prompt AI" name="prompt" onChange={() => {}} placeholder="Type your prompt" value="" required disabled />
+                <Input type="text" label="Prompt AI" name="prompt" onChange={e => setPromptData({...promptData, prompt: e.target.value })} placeholder="Type your prompt" value={promptData.prompt} required disabled={isLoading} />
             </form>
 
             <div className="mt-10">
