@@ -21,7 +21,7 @@ const Ai = () => {
     useEffect(() => {
         const fetchUserMessages = async () => {
             const { data } = await axios.get("/api/ai")
-            
+            setUserImage(data.image)
             setChat(data.aiChat)
         }
 
